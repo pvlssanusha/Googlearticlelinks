@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/google_search', methods=['GET'])
+@app.route('/', methods=['GET'])
 def article_search_view():
     if request.method == 'GET':
         api_key = "GOOGLE_API_KEY"  # Replace with your actual Google API key
@@ -35,21 +35,9 @@ def article_search_view():
     else:
         return jsonify({'error': 'Invalid request method'})
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
 
-# Define a Flask route for the API
-@app.route('/articles_search', methods=['GET'])
-def api_google_search():
-    if request.method == 'GET':
-        # Call your existing function
-        result = article_search_view(request)
 
-        # Return the result as JSON
-        return jsonify(result)
-    else:
-        return jsonify({'error': 'Invalid request method'})
 
 if __name__ == '__main__':
     app.run(debug=True)
