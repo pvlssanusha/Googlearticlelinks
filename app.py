@@ -1,13 +1,16 @@
 from flask import Flask, request, jsonify
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-app = Flask(__name__)
+app = Flask(name)
 
 @app.route('/', methods=['GET'])
 def article_search_view():
     if request.method == 'GET':
-        api_key = "GOOGLE_API_KEY"  # Replace with your actual Google API key
-        custom_search_engine_id = "CUSTOM_SEARCH_ENGINE_ID"  # Replace with your actual Custom Search Engine ID
+        api_key = os.getenv("GOOGLE_API_KEY")  # Replace with your actual Google API key
+        custom_search_engine_id = os.getenv("CUSTOM_SEARCH_ENGINE_ID")  # Replace with your actual Custom Search Engine ID
         query = request.args.get('topic', '')
 
         if not query:
@@ -36,8 +39,5 @@ def article_search_view():
         return jsonify({'error': 'Invalid request method'})
 
 
-
-
-
-if __name__ == '__main__':
+if name == 'main':
     app.run(debug=True)
