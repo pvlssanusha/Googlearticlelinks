@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Flask(name)
+app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def article_search_view():
