@@ -39,5 +39,5 @@ def article_search_view():
         return jsonify({'error': 'Invalid request method'})
 
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
