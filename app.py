@@ -6,9 +6,9 @@ load_dotenv()
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 def article_search_view():
-    if request.method == 'GET':
+    if request.method == 'POST':
         api_key = os.getenv("GOOGLE_API_KEY")  # Replace with your actual Google API key
         custom_search_engine_id = os.getenv("CUSTOM_SEARCH_ENGINE_ID")  # Replace with your actual Custom Search Engine ID
         query = request.get_json().get('topic')
